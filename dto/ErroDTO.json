@@ -1,7 +1,46 @@
 {
-    "codigo": 404,
-    "mensagem": "Deck não encontrado.",
-    "detalhes": "Verifique se o ID do deck está correto.",
-    "timestamp": "2025-04-19T16:10:00Z"
-  }
-  
+  "erros": [
+    {
+      "codigo": 400,
+      "mensagem": "Dados inválidos.",
+      "detalhes": "O campo 'email' não pode ser vazio.",
+      "timestamp": "2025-04-19T16:12:00Z"
+    },
+    {
+      "codigo": 401,
+      "mensagem": "Não autorizado.",
+      "detalhes": "A autenticação falhou ou a sessão expirou.",
+      "timestamp": "2025-04-19T16:14:00Z"
+    },
+    {
+      "codigo": 403,
+      "mensagem": "Acesso proibido.",
+      "detalhes": "Você não tem permissão para acessar este recurso.",
+      "timestamp": "2025-04-19T16:16:00Z"
+    },
+    {
+      "codigo": 404,
+      "mensagem": "Recurso não encontrado.",
+      "detalhes": "O recurso solicitado não existe ou foi removido.",
+      "timestamp": "2025-04-19T16:18:00Z"
+    },
+    {
+      "codigo": 500,
+      "mensagem": "Erro interno no servidor.",
+      "detalhes": "Ocorreu um erro inesperado no servidor. Tente novamente mais tarde.",
+      "timestamp": "2025-04-19T16:20:00Z"
+    },
+    {
+      "codigo": 405,
+      "mensagem": "Método não permitido.",
+      "detalhes": "O método HTTP não é permitido para este recurso.",
+      "timestamp": "2025-04-19T16:22:00Z"
+    },
+    {
+      "codigo": 404,
+      "mensagem": "Deck não encontrado.",
+      "detalhes": "Verifique se o ID do deck está correto.",
+      "timestamp": "2025-04-19T16:10:00Z"
+    }
+  ]
+}
