@@ -66,7 +66,9 @@ Representa um deck criado pelo usuário, contendo suas informações básicas, c
       "tipo": "Instantâneo",
       "cor": "Azul",
       "custoMana": "UU",
-      "quantidade": 2
+      "quantidade": 2,
+      "descricao": "Anula uma mágica alvo.",
+      "expansao": "Core Set 2020"
     },
     {
       "id": 102,
@@ -74,20 +76,28 @@ Representa um deck criado pelo usuário, contendo suas informações básicas, c
       "tipo": "Feitiço",
       "cor": "Azul",
       "custoMana": "U",
-      "quantidade": 4
+      "quantidade": 4,
+      "descricao": "Olhe as três cartas do topo do seu grimório, embaralhe-as de volta e compre uma.",
+      "expansao": "Lorwyn"
     }
   ],
-  "comentarios": [
-    {
-      "id": 15,
-      "usuarioId": 5,
-      "mensagem": "Adorei a escolha de cartas!",
-      "dataComentario": "2025-04-19T16:00:00Z"
-    }
-  ]
+  "comentarios": []
 }
-
 ```
+
+# 💬 ComentarioDTO
+Define um comentário dentro de um deck.
+```json
+
+{
+  "id": 15,
+  "deckId": 1,
+  "usuarioId": 5,
+  "mensagem": "Adorei a escolha de cartas!",
+  "dataComentario": "2025-04-19T16:00:00Z"
+}
+```
+
 
 # 👤 UsuarioDTO
 Contém os dados públicos de um usuário e a quantidade de decks criados por ele.

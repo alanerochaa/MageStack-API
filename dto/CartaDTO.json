@@ -1,0 +1,24 @@
+{
+  "cartas": [
+    {
+      "id": 101,
+      "nome": "Counterspell",
+      "tipo": "Instantâneo",
+      "cor": "Azul",
+      "custoMana": "UU",
+      "quantidade": 2,
+      "descricao": "Anula uma mágica alvo.",
+      "expansao": "Core Set 2020"
+    },
+    {
+      "id": 102,
+      "nome": "Ponder",
+      "tipo": "Feitiço",
+      "cor": "Azul",
+      "custoMana": "U",
+      "quantidade": 4,
+      "descricao": "Olhe as três cartas do topo do seu grimório, embaralhe-as de volta e compre uma.",
+      "expansao": "Lorwyn"
+    }
+  ]
+}
