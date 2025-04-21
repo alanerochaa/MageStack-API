@@ -135,3 +135,49 @@ Você pode validar a especificação usando o [Swagger Editor](https://editor.sw
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13-blue)
 ![Maven](https://img.shields.io/badge/Maven-3.8-green)
 ![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-yellow)
+
+
+
+## 🧪 Instalação e Execução Local
+1. Clone o repositório:
+```bash
+git clone https://github.com/alanerochaa/magestack-api.git
+```
+2. Navegue até a pasta:
+```bash
+cd magestack-api
+```
+3. Configure o banco de dados PostgreSQL e atualize o application.properties com suas credenciais.
+
+4. Rode o projeto:
+
+```bash
+./mvnw spring-boot:run
+```
+5. Acesse:
+```bash
+
+* API: http://localhost:8080
+
+* Swagger: http://localhost:8080/swagger-ui.html
+```
+
+# 📬 Contribuindo
+
+Contribuições são bem-vindas! Se você tiver sugestões, bugs ou ideias de melhorias, fique à vontade para abrir uma issue ou enviar um pull request.
+
+1. Fork o projeto
+2. Crie sua branch: `git checkout -b minha-feature`
+3. Faça suas alterações e commit: `git commit -m 'Minha nova feature'`
+4. Envie para a branch principal: `git push origin minha-feature`
+5. Abra um Pull Request
+
+
+# 📝 Licença (opcional)
+
+Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👩🏻‍💻 Autora
+Desenvolvido por Alane Rocha  
+🔗 [LinkedIn](https://www.linkedin.com/in/alanersilva/)  
+🐙 [GitHub](https://github.com/alanerochaa)
