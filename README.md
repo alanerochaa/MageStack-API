@@ -183,7 +183,7 @@ Contribuições são bem-vindas! Se você tiver sugestões, bugs ou ideias de me
 5. Abra um Pull Request
 
 
-# 📝 Licença (opcional)
+# 📝 Licença 
 
 Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 
