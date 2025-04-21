@@ -1,8 +1,25 @@
 {
-    "id": 15,
-    "deckId": 1,
-    "usuarioId": 5,
-    "mensagem": "Adorei a escolha de cartas!",
-    "dataComentario": "2025-04-19T16:00:00Z"
-  }
-  
+  "comentarios": [
+    {
+      "id": 15,
+      "deckId": 1,
+      "usuarioId": 5,
+      "mensagem": "Adorei a escolha de cartas!",
+      "dataComentario": "2025-04-19T16:00:00Z"
+    },
+    {
+      "id": 16,
+      "deckId": 2,
+      "usuarioId": 7,
+      "mensagem": "Esse deck tem uma boa sinergia, gostei bastante da escolha das criaturas!",
+      "dataComentario": "2025-04-19T17:30:00Z"
+    },
+    {
+      "id": 17,
+      "deckId": 3,
+      "usuarioId": 8,
+      "mensagem": "Interessante a combinação de feitiços! Isso pode ser bem útil em partidas longas.",
+      "dataComentario": "2025-04-19T18:15:00Z"
+    }
+  ]
+}

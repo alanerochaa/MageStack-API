@@ -1,8 +1,25 @@
 {
-    "id": 5,
-    "nome": "Julia Silva",
-    "email": "Julia.silva@example.com",
-    "decksCriados": 22,
-    "dataCadastro": "2025-04-10T09:00:00Z"
-  }
-  
+  "usuarios": [
+    {
+      "id": 5,
+      "nome": "Julia Silva",
+      "email": "Julia.silva@example.com",
+      "decksCriados": 22,
+      "dataCadastro": "2025-04-10T09:00:00Z"
+    },
+    {
+      "id": 6,
+      "nome": "Carlos Oliveira",
+      "email": "carlos.oliveira@example.com",
+      "decksCriados": 15,
+      "dataCadastro": "2025-04-12T14:30:00Z"
+    },
+    {
+      "id": 7,
+      "nome": "Mariana Souza",
+      "email": "mariana.souza@example.com",
+      "decksCriados": 30,
+      "dataCadastro": "2025-04-15T11:45:00Z"
+    }
+  ]
+}

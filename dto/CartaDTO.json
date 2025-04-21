@@ -19,6 +19,56 @@
       "quantidade": 4,
       "descricao": "Olhe as três cartas do topo do seu grimório, embaralhe-as de volta e compre uma.",
       "expansao": "Lorwyn"
+    },
+    {
+      "id": 103,
+      "nome": "Lightning Bolt",
+      "tipo": "Feitiço",
+      "cor": "Vermelha",
+      "custoMana": "R",
+      "quantidade": 3,
+      "descricao": "Lightning Bolt causa 3 de dano a qualquer alvo.",
+      "expansao": "Alpha"
+    },
+    {
+      "id": 104,
+      "nome": "Serra Angel",
+      "tipo": "Criatura",
+      "cor": "Branca",
+      "custoMana": "3WW",
+      "quantidade": 1,
+      "descricao": "Voar, Toque Mortal. Quando Serra Angel ataca, cause 4 de dano ao alvo.",
+      "expansao": "Revised"
+    },
+    {
+      "id": 105,
+      "nome": "Shivan Dragon",
+      "tipo": "Criatura",
+      "cor": "Vermelha",
+      "custoMana": "4RR",
+      "quantidade": 2,
+      "descricao": "Voar. Gaste 1 de mana vermelha para dar +1/+0 a Shivan Dragon até o final do turno.",
+      "expansao": "Beta"
+    },
+    {
+      "id": 106,
+      "nome": "Black Lotus",
+      "tipo": "Artefato",
+      "cor": "Incolor",
+      "custoMana": "0",
+      "quantidade": 1,
+      "descricao": "Sacrifique Black Lotus: adicione três manas de qualquer cor à sua reserva de mana.",
+      "expansao": "Alpha"
+    },
+    {
+      "id": 107,
+      "nome": "Tarmogoyf",
+      "tipo": "Criatura",
+      "cor": "Verde",
+      "custoMana": "1GG",
+      "quantidade": 4,
+      "descricao": "A força e resistência de Tarmogoyf são iguais ao número de tipos de card no cemitério.",
+      "expansao": "Future Sight"
     }
   ]
 }

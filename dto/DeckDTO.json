@@ -1,4 +1,5 @@
-{
+[
+  {
     "id": 1,
     "nome": "Deck Controle Azul",
     "formato": "Commander",
@@ -25,5 +26,61 @@
       }
     ],
     "comentarios": []
+  },
+  {
+    "id": 2,
+    "nome": "Deck Aggro Vermelho",
+    "formato": "Standard",
+    "descricao": "Deck focado em agressão rápida e dano direto ao oponente.",
+    "usuarioId": 6,
+    "publico": true,
+    "dataCriacao": "2025-04-20T10:00:00Z",
+    "cartas": [
+      {
+        "id": 201,
+        "nome": "Lightning Bolt",
+        "tipo": "Feitiço",
+        "cor": "Vermelha",
+        "custoMana": "R",
+        "quantidade": 3
+      },
+      {
+        "id": 202,
+        "nome": "Goblin Guide",
+        "tipo": "Criatura",
+        "cor": "Vermelha",
+        "custoMana": "R",
+        "quantidade": 4
+      }
+    ],
+    "comentarios": []
+  },
+  {
+    "id": 3,
+    "nome": "Deck Ramp Verde",
+    "formato": "Commander",
+    "descricao": "Deck focado em acelerar a mana para jogar criaturas grandes rapidamente.",
+    "usuarioId": 7,
+    "publico": true,
+    "dataCriacao": "2025-04-20T14:30:00Z",
+    "cartas": [
+      {
+        "id": 301,
+        "nome": "Llanowar Elves",
+        "tipo": "Criatura",
+        "cor": "Verde",
+        "custoMana": "G",
+        "quantidade": 4
+      },
+      {
+        "id": 302,
+        "nome": "Green Sun's Zenith",
+        "tipo": "Feitiço",
+        "cor": "Verde",
+        "custoMana": "XGG",
+        "quantidade": 2
+      }
+    ],
+    "comentarios": []
   }
-  
+]
