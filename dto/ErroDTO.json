@@ -39,7 +39,7 @@
     {
       "codigo": 404,
       "mensagem": "Deck não encontrado.",
-      "detalhes": "Verifique se o ID do deck está correto.",
+      "detalhes": "O deck solicitado não existe ou foi removido.",
       "timestamp": "2025-04-19T16:10:00Z"
     }
   ]
