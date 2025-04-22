@@ -14,14 +14,6 @@ info:
       - Curtidas e comentários nos decks
       - Estatísticas de uso
 
-    🔮 **Significado do nome:**
-    - **Mage** = "Mago" em inglês, referindo-se aos jogadores e personagens mágicos no universo de MTG.
-    - **Stack** = A pilha onde feitiços e habilidades ficam antes de serem resolvidos no jogo, além de ser um termo técnico comum em programação, como em "full stack developer".
-    
-    **Significado geral:** Uma API para magos programadores, que "empilham" funcionalidades como feitiços — ideal para uma aplicação cheia de interações mágicas e técnicas.
-    
-    ✨ **Mágico + Técnico = Perfeito para MTG + Programação.**
-
   contact:
     name: Repositório GitHub
     email: contato@magestack.com
@@ -33,14 +25,14 @@ info:
 
 
 
-# Lista de servidores onde a API pode ser acessada
+# Os servidores de onde a API pode ser acessada
 servers:
   - url: http://localhost:8080/api
     description: Servidor local de desenvolvimento
   - url: https://api.mtgdeckbuilder.com
     description: Servidor de produção
 
-# Agrupamento de endpoints por categoria
+# Os endpoints por categoria
 tags:
   - name: Decks
     description: Operações de gerenciamento de decks
@@ -57,7 +49,7 @@ tags:
   - name: Estatísticas
     description: Relatórios e métricas da plataforma
 
-# Definição de rotas (endpoints)
+# Definição das rotas 
 paths:
   /decks:
     get:
@@ -96,7 +88,7 @@ paths:
           $ref: '#/components/responses/InternalError'
 
   /decks/{id}:
-    # Parâmetro path para identificar o deck
+    # Parâmetro que ajuda a identificar o deck
     parameters:
       - $ref: '#/components/parameters/DeckId'
     get:
