@@ -1,5 +1,9 @@
 # 🔮 MageStack API
 
+📁 Repositório: [MageStack API - GitHub](https://github.com/alanerochaa/MageStack-API)
+
+Se você é fã de Magic: The Gathering e busca uma forma prática de organizar seus decks online, a **MageStack API** é a solução ideal! 
+
 Esta API RESTful permite a criação, gerenciamento e compartilhamento de decks de Magic: The Gathering (MTG), oferecendo funcionalidades inspiradas na plataforma Moxfield. Os usuários podem montar decks, adicionar cartas, visualizar estatísticas, curtir e comentar decks, além de buscar cartas por diversos critérios.
 
 A documentação segue o padrão OpenAPI.
@@ -180,7 +184,7 @@ Contém os dados públicos de um usuário e a quantidade de decks criados por el
     {
       "id": 5,
       "nome": "Julia Silva",
-      "email": "Julia.silva@example.com",
+      "email": "julia.silva@example.com",
       "decksCriados": 22,
       "dataCadastro": "2025-04-10T09:00:00Z"
     },
@@ -247,7 +251,7 @@ Utilizado para padronizar o retorno de erros da API.
     {
       "codigo": 404,
       "mensagem": "Deck não encontrado.",
-      "detalhes": "Verifique se o ID do deck está correto.",
+      "detalhes": "O deck solicitado não existe ou foi removido.",
       "timestamp": "2025-04-19T16:10:00Z"
     }
   ]
