@@ -23,16 +23,12 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
 
-
-
-# Os servidores de onde a API pode ser acessada
 servers:
   - url: http://localhost:8080/api
     description: Servidor local de desenvolvimento
   - url: https://api.mtgdeckbuilder.com
     description: Servidor de produção
 
-# Os endpoints por categoria
 tags:
   - name: Decks
     description: Operações de gerenciamento de decks
@@ -49,7 +45,6 @@ tags:
   - name: Estatísticas
     description: Relatórios e métricas da plataforma
 
-# Definição das rotas 
 paths:
   /decks:
     get:
@@ -63,9 +58,9 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/DeckDTO'
+                  type: object
         '500':
-          $ref: '#/components/responses/InternalError'
+          description: Erro interno do servidor
     post:
       summary: Criar um novo deck
       tags: [Decks]
@@ -74,23 +69,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DeckCreateDTO'
+              type: object
       responses:
         '201':
           description: Deck criado com sucesso
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeckDTO'
+                type: object
         '400':
-          $ref: '#/components/responses/BadRequest'
+          description: Requisição inválida
         '500':
-          $ref: '#/components/responses/InternalError'
+          description: Erro interno do servidor
 
   /decks/{id}:
-    # Parâmetro que ajuda a identificar o deck
     parameters:
-      - $ref: '#/components/parameters/DeckId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
     get:
       summary: Obter um deck pelo ID
       tags: [Decks]
@@ -100,11 +98,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeckDTO'
+                type: object
         '404':
-          $ref: '#/components/responses/NotFound'
+          description: Deck não encontrado
         '500':
-          $ref: '#/components/responses/InternalError'
+          description: Erro interno do servidor
     put:
       summary: Atualizar um deck existente
       tags: [Decks]
@@ -113,20 +111,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DeckUpdateDTO'
+              type: object
       responses:
         '200':
           description: Deck atualizado com sucesso
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeckDTO'
+                type: object
         '400':
-          $ref: '#/components/responses/BadRequest'
+          description: Requisição inválida
         '404':
-          $ref: '#/components/responses/NotFound'
+          description: Deck não encontrado
         '500':
-          $ref: '#/components/responses/InternalError'
+          description: Erro interno do servidor
     delete:
       summary: Remover um deck
       tags: [Decks]
@@ -134,232 +132,341 @@ paths:
         '204':
           description: Deck removido com sucesso (sem conteúdo)
         '404':
-          $ref: '#/components/responses/NotFound'
+          description: Deck não encontrado
         '500':
-          $ref: '#/components/responses/InternalError'
+          description: Erro interno do servidor
 
-  # ... Aqui você continua adicionando as demais rotas (/cartas, /usuarios, /comentarios, etc.)
-  # até ter no mínimo 20 endpoints documentados.
-
-# Definições reutilizáveis para parâmetros, respostas e esquemas
-components:
-
-  # Esquemas de autenticação (se aplicável)
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-
-  # Parâmetros globais
-  parameters:
-    DeckId:
-      name: id
-      in: path
-      description: ID do deck
-      required: true
-      schema:
-        type: integer
-
-  # Respostas de erro padrão
-  responses:
-    BadRequest:
-      description: Requisição inválida (400)
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErroDTO'
-    NotFound:
-      description: Recurso não encontrado (404)
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErroDTO'
-    InternalError:
-      description: Erro interno do servidor (500)
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErroDTO'
-    Unauthorized:
-      description: Não autorizado (401)
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErroDTO'
-
-  schemas:
-    # DTO principal de Deck
-    DeckDTO:
-      type: object
-      properties:
-        id:
-          type: integer  # Identificador único
-        nome:
-          type: string   # Nome dado ao deck
-        formato:
-          type: string   # Formato do deck (ex: Commander, Standard)
-        descricao:
-          type: string   # Descrição detalhada do deck
-        usuarioId:
-          type: integer  # ID do usuário criador
-        publico:
-          type: boolean  # Se o deck é público ou privado
-        dataCriacao:
-          type: string
-          format: date-time  # Data e hora de criação (ISO 8601)
-        cartas:
-          type: array
-          items:
-            $ref: '#/components/schemas/CartaDTO'
-        comentarios:
-          type: array
-          items:
-            $ref: '#/components/schemas/ComentarioDTO'
-      required: [id, nome, formato, dataCriacao]  # Campos obrigatórios
-
-    # DTO para criar um novo deck
-    DeckCreateDTO:
-      type: object
-      properties:
-        nome:
-          type: string
-        formato:
-          type: string
-        descricao:
-          type: string
-        publico:
-          type: boolean
-      required: [nome, formato]
-
-    # DTO para atualização de deck (sem ID)
-    DeckUpdateDTO:
-      type: object
-      properties:
-        nome:
-          type: string
-        formato:
-          type: string
-        descricao:
-          type: string
-        publico:
-          type: boolean
-      required: [nome, formato]
-
-    # DTO de Carta
-    CartaDTO:
-      type: object
-      properties:
-        id:
+  /decks/{id}/comentarios:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
           type: integer
-        nome:
-          type: string
-        tipo:
-          type: string
-        cor:
-          type: string
-        custoMana:
-          type: string
-        quantidade:
+    get:
+      summary: Listar comentários de um deck
+      tags: [Comentários]
+      responses:
+        '200':
+          description: Lista de comentários retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '404':
+          description: Deck não encontrado
+        '500':
+          description: Erro interno do servidor
+    post:
+      summary: Adicionar um comentário a um deck
+      tags: [Comentários]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Comentário criado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Deck não encontrado
+        '500':
+          description: Erro interno do servidor
+
+  /usuarios:
+    get:
+      summary: Listar todos os usuários
+      tags: [Usuários]
+      responses:
+        '200':
+          description: Lista de usuários retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '500':
+          description: Erro interno do servidor
+    post:
+      summary: Criar um novo usuário
+      tags: [Usuários]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Usuário criado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Requisição inválida
+
+  /usuarios/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
           type: integer
-      required: [id, nome, quantidade]
+    get:
+      summary: Obter perfil de um usuário
+      tags: [Usuários]
+      responses:
+        '200':
+          description: Perfil encontrado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Usuário não encontrado
+    put:
+      summary: Atualizar informações de um usuário
+      tags: [Usuários]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Usuário atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Usuário não encontrado
+        '500':
+          description: Erro interno do servidor
+    delete:
+      summary: Deletar um usuário
+      tags: [Usuários]
+      responses:
+        '204':
+          description: Usuário deletado com sucesso (sem conteúdo)
+        '404':
+          description: Usuário não encontrado
+        '500':
+          description: Erro interno do servidor
 
-    # DTO de Comentário
-    ComentarioDTO:
-      type: object
-      properties:
-        id:
+  /cartas:
+    get:
+      summary: Listar todas as cartas disponíveis
+      tags: [Cartas]
+      responses:
+        '200':
+          description: Lista de cartas retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+
+  /cartas/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
           type: integer
-        usuarioId:
+    get:
+      summary: Buscar uma carta pelo ID
+      tags: [Cartas]
+      responses:
+        '200':
+          description: Carta encontrada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Carta não encontrada
+        '500':
+          description: Erro interno do servidor
+    put:
+      summary: Atualizar uma carta existente
+      tags: [Cartas]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Carta atualizada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Carta não encontrada
+        '500':
+          description: Erro interno do servidor
+    delete:
+      summary: Deletar uma carta
+      tags: [Cartas]
+      responses:
+        '204':
+          description: Carta deletada com sucesso (sem conteúdo)
+        '404':
+          description: Carta não encontrada
+        '500':
+          description: Erro interno do servidor
+
+  /comentarios:
+    post:
+      summary: Criar um novo comentário
+      tags: [Comentários]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Comentário criado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Requisição inválida
+
+  /comentarios/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
           type: integer
-        mensagem:
-          type: string
-        dataComentario:
-          type: string
-          format: date-time
-      required: [id, usuarioId, mensagem]
+    put:
+      summary: Atualizar um comentário
+      tags: [Comentários]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Comentário atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Comentário não encontrado
+        '500':
+          description: Erro interno do servidor
+    delete:
+      summary: Deletar um comentário
+      tags: [Comentários]
+      responses:
+        '204':
+          description: Comentário deletado com sucesso (sem conteúdo)
+        '404':
+          description: Comentário não encontrado
+        '500':
+          description: Erro interno do servidor
 
-    # DTO para criar comentário (sem ID)
-    ComentarioCreateDTO:
-      type: object
-      properties:
-        usuarioId:
+  /auth/login:
+    post:
+      summary: Autenticar um usuário
+      tags: [Autenticação]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Login bem-sucedido
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Não autorizado
+
+  /auth/refresh:
+    post:
+      summary: Atualizar token de acesso
+      tags: [Autenticação]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Tokens atualizados com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /curtidas/{deckId}:
+    parameters:
+      - name: deckId
+        in: path
+        required: true
+        schema:
           type: integer
-        mensagem:
-          type: string
-      required: [usuarioId, mensagem]
+    post:
+      summary: Curtir um deck
+      tags: [Curtidas]
+      responses:
+        '200':
+          description: Deck curtido com sucesso
+        '404':
+          description: Deck não encontrado
 
-    # DTO de Usuário
-    UsuarioDTO:
-      type: object
-      properties:
-        id:
-          type: integer
-        nome:
-          type: string
-        email:
-          type: string
-          format: email
-        decksCriados:
-          type: integer
-        dataCadastro:
-          type: string
-          format: date-time
-      required: [id, nome, email]
-
-    # DTO para criar usuário (com senha)
-    UsuarioCreateDTO:
-      type: object
-      properties:
-        nome:
-          type: string
-        email:
-          type: string
-          format: email
-        senha:
-          type: string
-      required: [nome, email, senha]
-
-    # DTO para autenticação (login)
-    AuthRequest:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-        senha:
-          type: string
-      required: [email, senha]
-
-    # DTO para refresh de token
-    AuthRefreshRequest:
-      type: object
-      properties:
-        refreshToken:
-          type: string
-      required: [refreshToken]
-
-    # DTO de resposta de autenticação
-    AuthResponse:
-      type: object
-      properties:
-        accessToken:
-          type: string
-        refreshToken:
-          type: string
-      required: [accessToken, refreshToken]
-
-    # DTO de erro padrão
-    ErroDTO:
-      type: object
-      properties:
-        codigo:
-          type: integer
-        mensagem:
-          type: string
-        detalhes:
-          type: string
-        timestamp:
-          type: string
-          format: date-time
-      required: [codigo, mensagem]
+  /estatisticas:
+    get:
+      summary: Obter estatísticas gerais da plataforma
+      tags: [Estatísticas]
+      responses:
+        '200':
+          description: Estatísticas obtidas com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalUsuarios:
+                    type: integer
+                  totalDecks:
+                    type: integer
+                  totalCurtidas:
+                    type: integer
+                  totalComentarios:
+                    type: integer
