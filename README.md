@@ -23,28 +23,31 @@ A documentação segue o padrão OpenAPI.
 
 ## 🔧 Rotas da API
 
-| Método | Rota                              | Descrição                                   | Status Codes         |
-|--------|-----------------------------------|---------------------------------------------|----------------------|
-| GET    | /decks                            | Listar todos os decks                       | 200, 500             |
-| GET    | /decks/{id}                       | Buscar um deck pelo ID                      | 200, 404, 500        |
-| GET    | /cartas                           | Listar todas as cartas                      | 200, 500             |
-| GET    | /cartas/{id}                      | Buscar carta por ID                         | 200, 404, 500        |
-| GET    | /usuarios                         | Listar todos os usuários                    | 200, 500             |
-| GET    | /usuarios/{id}                    | Buscar usuário por ID                       | 200, 404, 500        |
-| GET    | /decks/{id}/comentarios           | Listar comentários de um deck específico    | 200, 404, 500        |
-| POST   | /decks                            | Criar novo deck                             | 201, 400, 500        |
-| POST   | /cartas                           | Criar nova carta                            | 201, 400, 500        |
-| POST   | /usuarios                         | Criar novo usuário                          | 201, 400, 500        |
-| POST   | /comentarios                      | Criar novo comentário                       | 201, 400, 500        |
-| POST   | /decks/{id}/curtir                | Curtir um deck                              | 200, 404, 500        |
-| POST   | /decks/{id}/comentarios           | Adicionar comentário a um deck              | 201, 400, 404, 500   |
-| PUT    | /decks/{id}                       | Atualizar informações de um deck            | 200, 400, 404, 500   |
-| PUT    | /cartas/{id}                      | Atualizar informações de uma carta          | 200, 400, 404, 500   |
-| PUT    | /usuarios/{id}                    | Atualizar informações de um usuário         | 200, 400, 404, 500   |
-| PUT    | /comentarios/{id}                 | Atualizar comentário                        | 200, 400, 404, 500   |
-| DELETE | /decks/{id}                       | Deletar deck por ID                         | 204, 404, 500        |
-| DELETE | /cartas/{id}                      | Deletar carta por ID                        | 204, 404, 500        |
-| DELETE | /usuarios/{id}                    | Deletar usuário por ID                      | 204, 404, 500        |
+## 🔧 Rotas da API
+
+| Método | Rota                        | Descrição                                      | Status Codes       |
+|--------|-----------------------------|------------------------------------------------|--------------------|
+| GET    | `/decks`                    | Listar todos os decks                          | 200, 500           |
+| POST   | `/decks`                    | Criar um novo deck                             | 201, 400, 500      |
+| GET    | `/decks/{id}`               | Obter um deck pelo ID                          | 200, 404, 500      |
+| PUT    | `/decks/{id}`               | Atualizar um deck existente                    | 200, 400, 404, 500 |
+| DELETE | `/decks/{id}`               | Remover um deck                                | 204, 404, 500      |
+| GET    | `/decks/{id}/comentarios`   | Listar comentários de um deck                  | 200, 404, 500      |
+| POST   | `/decks/{id}/comentarios`   | Adicionar um comentário a um deck              | 201, 400, 404, 500 |
+| POST   | `/usuarios`                 | Criar um novo usuário                          | 201, 400           |
+| GET    | `/usuarios/{id}`            | Obter perfil de um usuário                     | 200, 404           |
+| PUT    | `/usuarios/{id}`            | Atualizar informações de um usuário            | 200, 400, 404, 500 |
+| DELETE | `/usuarios/{id}`            | Deletar um usuário                             | 204, 404, 500      |
+| GET    | `/cartas`                   | Listar todas as cartas disponíveis             | 200                |
+| GET    | `/cartas/{id}`              | Buscar uma carta pelo ID                       | 200, 404, 500      |
+| POST   | `/comentarios`              | Criar um novo comentário                       | 201, 400           |
+| PUT    | `/comentarios/{id}`         | Atualizar um comentário                        | 200, 400, 404, 500 |
+| DELETE | `/comentarios/{id}`         | Deletar um comentário                          | 204, 404, 500      |
+| POST   | `/auth/login`               | Autenticar um usuário                          | 200, 401           |
+| POST   | `/auth/refresh`             | Atualizar token de acesso                      | 200                |
+| POST   | `/curtidas/{deckId}`        | Curtir um deck                                 | 200, 404           |
+| GET    | `/estatisticas`             | Obter estatísticas gerais da plataforma        | 200                |
+
 
 ---
 
