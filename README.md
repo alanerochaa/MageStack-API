@@ -21,8 +21,6 @@ A documentação segue o padrão OpenAPI.
 
 ## 🔧 Rotas da API
 
-## 🔧 Rotas da API
-
 | Método | Rota                        | Descrição                                      | Status Codes       |
 |--------|-----------------------------|------------------------------------------------|--------------------|
 | GET    | `/decks`                    | Listar todos os decks                          | 200, 500           |

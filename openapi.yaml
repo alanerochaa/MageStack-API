@@ -59,8 +59,60 @@ paths:
                 type: array
                 items:
                   type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: "ID do deck"
+                    nome:
+                      type: string
+                      description: "Nome do deck"
+                    formato:
+                      type: string
+                      description: "Formato do deck"
+                    descricao:
+                      type: string
+                      description: "Descrição do deck"
+                    usuarioId:
+                      type: integer
+                      description: "ID do usuário"
+                    publico:
+                      type: boolean
+                      description: "O deck é público"
+                    dataCriacao:
+                      type: string
+                      format: date-time
+                      description: "Data de criação do deck"
+                    cartas:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: "ID da carta"
+                          nome:
+                            type: string
+                            description: "Nome da carta"
+                          tipo:
+                            type: string
+                            description: "Tipo da carta"
+                          cor:
+                            type: string
+                            description: "Cor da carta"
+                          custoMana:
+                            type: string
+                            description: "Custo de mana"
+                          quantidade:
+                            type: integer
+                            description: "Quantidade de cartas"
+                    comentarios:
+                      type: array
+                      items:
+                        type: string
+                      description: "Comentários sobre o deck"
         '500':
           description: Erro interno do servidor
+
     post:
       summary: Criar um novo deck
       tags: [Decks]
@@ -70,6 +122,70 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                nome:
+                  type: string
+                  description: "Nome do deck"
+                formato:
+                  type: string
+                  description: "Formato do deck"
+                descricao:
+                  type: string
+                  description: "Descrição do deck"
+                usuarioId:
+                  type: integer
+                  description: "ID do usuário"
+                publico:
+                  type: boolean
+                  description: "O deck é público"
+                dataCriacao:
+                  type: string
+                  format: date-time
+                  description: "Data de criação do deck"
+                cartas:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      nome:
+                        type: string
+                        description: "Nome da carta"
+                      tipo:
+                        type: string
+                        description: "Tipo da carta"
+                      cor:
+                        type: string
+                        description: "Cor da carta"
+                      custoMana:
+                        type: string
+                        description: "Custo de mana"
+                      quantidade:
+                        type: integer
+                        description: "Quantidade de cartas"
+                comentarios:
+                  type: array
+                  items:
+                    type: string
+                  description: "Comentários sobre o deck"
+            example:
+              nome: "Deck Controle Azul"
+              formato: "Commander"
+              descricao: "Deck focado em controle e anulação de mágicas."
+              usuarioId: 5
+              publico: true
+              dataCriacao: "2025-04-19T15:30:00Z"
+              cartas:
+                - nome: "Counterspell"
+                  tipo: "Instantâneo"
+                  cor: "Azul"
+                  custoMana: "UU"
+                  quantidade: 2
+                - nome: "Ponder"
+                  tipo: "Feitiço"
+                  cor: "Azul"
+                  custoMana: "U"
+                  quantidade: 4
+              comentarios: []
       responses:
         '201':
           description: Deck criado com sucesso
@@ -77,6 +193,43 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  id:
+                    type: integer
+                  nome:
+                    type: string
+                  formato:
+                    type: string
+                  descricao:
+                    type: string
+                  usuarioId:
+                    type: integer
+                  publico:
+                    type: boolean
+                  dataCriacao:
+                    type: string
+                    format: date-time
+                  cartas:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        nome:
+                          type: string
+                        tipo:
+                          type: string
+                        cor:
+                          type: string
+                        custoMana:
+                          type: string
+                        quantidade:
+                          type: integer
+                  comentarios:
+                    type: array
+                    items:
+                      type: string
         '400':
           description: Requisição inválida
         '500':
@@ -99,10 +252,48 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  id:
+                    type: integer
+                  nome:
+                    type: string
+                  formato:
+                    type: string
+                  descricao:
+                    type: string
+                  usuarioId:
+                    type: integer
+                  publico:
+                    type: boolean
+                  dataCriacao:
+                    type: string
+                    format: date-time
+                  cartas:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        nome:
+                          type: string
+                        tipo:
+                          type: string
+                        cor:
+                          type: string
+                        custoMana:
+                          type: string
+                        quantidade:
+                          type: integer
+                  comentarios:
+                    type: array
+                    items:
+                      type: string
         '404':
           description: Deck não encontrado
         '500':
           description: Erro interno do servidor
+
     put:
       summary: Atualizar um deck existente
       tags: [Decks]
@@ -112,6 +303,51 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                nome:
+                  type: string
+                  description: "Nome do deck"
+                formato:
+                  type: string
+                  description: "Formato do deck"
+                descricao:
+                  type: string
+                  description: "Descrição do deck"
+                usuarioId:
+                  type: integer
+                  description: "ID do usuário"
+                publico:
+                  type: boolean
+                  description: "O deck é público"
+                dataCriacao:
+                  type: string
+                  format: date-time
+                  description: "Data de criação do deck"
+                cartas:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      nome:
+                        type: string
+                        description: "Nome da carta"
+                      tipo:
+                        type: string
+                        description: "Tipo da carta"
+                      cor:
+                        type: string
+                        description: "Cor da carta"
+                      custoMana:
+                        type: string
+                        description: "Custo de mana"
+                      quantidade:
+                        type: integer
+                        description: "Quantidade de cartas"
+                comentarios:
+                  type: array
+                  items:
+                    type: string
+                  description: "Comentários sobre o deck"
       responses:
         '200':
           description: Deck atualizado com sucesso
@@ -125,6 +361,7 @@ paths:
           description: Deck não encontrado
         '500':
           description: Erro interno do servidor
+
     delete:
       summary: Remover um deck
       tags: [Decks]
@@ -155,6 +392,39 @@ paths:
                 type: array
                 items:
                   type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: "Identificador único do comentário"
+                    deckId:
+                      type: integer
+                      description: "ID do deck ao qual o comentário pertence"
+                    usuarioId:
+                      type: integer
+                      description: "ID do usuário que fez o comentário"
+                    mensagem:
+                      type: string
+                      description: "Mensagem do comentário"
+                    dataComentario:
+                      type: string
+                      format: date-time
+                      description: "Data e hora do comentário"
+              example:
+                - id: 15
+                  deckId: 1
+                  usuarioId: 5
+                  mensagem: "Adorei a escolha de cartas!"
+                  dataComentario: "2025-04-19T16:00:00Z"
+                - id: 16
+                  deckId: 2
+                  usuarioId: 7
+                  mensagem: "Esse deck tem uma boa sinergia, gostei bastante da escolha das criaturas!"
+                  dataComentario: "2025-04-19T17:30:00Z"
+                - id: 17
+                  deckId: 3
+                  usuarioId: 8
+                  mensagem: "Interessante a combinação de feitiços! Isso pode ser bem útil em partidas longas."
+                  dataComentario: "2025-04-19T18:15:00Z"
         '404':
           description: Deck não encontrado
         '500':
@@ -168,6 +438,25 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                deckId:
+                  type: integer
+                  description: "ID do deck que receberá o comentário"
+                usuarioId:
+                  type: integer
+                  description: "ID do usuário que está fazendo o comentário"
+                mensagem:
+                  type: string
+                  description: "Mensagem do comentário"
+                dataComentario:
+                  type: string
+                  format: date-time
+                  description: "Data e hora do comentário"
+            example:
+              deckId: 1
+              usuarioId: 5
+              mensagem: "Adorei a escolha de cartas!"
+              dataComentario: "2025-04-19T16:00:00Z"
       responses:
         '201':
           description: Comentário criado com sucesso
@@ -175,6 +464,29 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  id:
+                    type: integer
+                    description: "Identificador único do comentário"
+                  deckId:
+                    type: integer
+                    description: "ID do deck ao qual o comentário pertence"
+                  usuarioId:
+                    type: integer
+                    description: "ID do usuário que fez o comentário"
+                  mensagem:
+                    type: string
+                    description: "Mensagem do comentário"
+                  dataComentario:
+                    type: string
+                    format: date-time
+                    description: "Data e hora do comentário"
+              example:
+                id: 18
+                deckId: 1
+                usuarioId: 6
+                mensagem: "Ótimo deck, gostei muito!"
+                dataComentario: "2025-04-19T19:00:00Z"
         '400':
           description: Requisição inválida
         '404':
@@ -195,8 +507,26 @@ paths:
                 type: array
                 items:
                   type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: "ID do usuário"
+                    nome:
+                      type: string
+                      description: "Nome do usuário"
+                    email:
+                      type: string
+                      description: "E-mail do usuário"
+                    decksCriados:
+                      type: integer
+                      description: "Número de decks criados pelo usuário"
+                    dataCadastro:
+                      type: string
+                      format: date-time
+                      description: "Data de cadastro do usuário"
         '500':
           description: Erro interno do servidor
+
     post:
       summary: Criar um novo usuário
       tags: [Usuários]
@@ -206,6 +536,25 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                nome:
+                  type: string
+                  description: "Nome do usuário"
+                email:
+                  type: string
+                  description: "E-mail do usuário"
+                decksCriados:
+                  type: integer
+                  description: "Número de decks criados"
+                dataCadastro:
+                  type: string
+                  format: date-time
+                  description: "Data de cadastro"
+            example:
+              nome: "Lucas Souza"
+              email: "lucas.souza@example.com"
+              decksCriados: 5
+              dataCadastro: "2025-04-20T10:15:00Z"
       responses:
         '201':
           description: Usuário criado com sucesso
@@ -213,8 +562,22 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  id:
+                    type: integer
+                  nome:
+                    type: string
+                  email:
+                    type: string
+                  decksCriados:
+                    type: integer
+                  dataCadastro:
+                    type: string
+                    format: date-time
         '400':
           description: Requisição inválida
+        '500':
+          description: Erro interno do servidor
 
   /usuarios/{id}:
     parameters:
@@ -233,8 +596,23 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  id:
+                    type: integer
+                  nome:
+                    type: string
+                  email:
+                    type: string
+                  decksCriados:
+                    type: integer
+                  dataCadastro:
+                    type: string
+                    format: date-time
         '404':
           description: Usuário não encontrado
+        '500':
+          description: Erro interno do servidor
+
     put:
       summary: Atualizar informações de um usuário
       tags: [Usuários]
@@ -244,6 +622,20 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                nome:
+                  type: string
+                  description: "Nome do usuário"
+                email:
+                  type: string
+                  description: "E-mail do usuário"
+                decksCriados:
+                  type: integer
+                  description: "Número de decks criados"
+                dataCadastro:
+                  type: string
+                  format: date-time
+                  description: "Data de cadastro"
       responses:
         '200':
           description: Usuário atualizado com sucesso
@@ -257,6 +649,7 @@ paths:
           description: Usuário não encontrado
         '500':
           description: Erro interno do servidor
+
     delete:
       summary: Deletar um usuário
       tags: [Usuários]
@@ -267,6 +660,7 @@ paths:
           description: Usuário não encontrado
         '500':
           description: Erro interno do servidor
+
 
   /cartas:
     get:
